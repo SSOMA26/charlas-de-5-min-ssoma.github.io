@@ -1,0 +1,11 @@
+{
+  "name": "cronograma-ssoma-2026",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cronograma web estático de charlas SSOMA para noviembre y diciembre de 2026",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "check": "node --check assets/js/data.js && node --check assets/js/app.js && node --check service-worker.js && node tests/logic-test.js"
+  },
+  "license": "MIT"
+}

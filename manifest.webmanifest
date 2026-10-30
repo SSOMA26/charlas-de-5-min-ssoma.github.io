@@ -1,0 +1,13 @@
+{
+  "name": "Cronograma de Charlas SSOMA 2026",
+  "short_name": "SSOMA 2026",
+  "description": "Cronograma de charlas SSOMA con responsables y evidencias fotográficas.",
+  "lang": "es",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f2f7f9",
+  "theme_color": "#06365f",
+  "icons": [
+    { "src": "assets/images/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

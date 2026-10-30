@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#06365f">
+  <meta name="description" content="Cronograma de charlas SSOMA de noviembre y diciembre de 2026, con responsables, imágenes y evidencias.">
+  <title>Cronograma SSOMA 2026 | Yupay Tech</title>
+  <link rel="icon" href="assets/images/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#calendario">Saltar al cronograma</a>
+
+  <header class="hero">
+    <div class="hero__inner">
+      <div class="brand" aria-label="Yupay Tech">
+        <span class="brand__mark">Y</span>
+        <span>YUPAY <b>TECH</b></span>
+      </div>
+      <div class="hero__copy">
+        <p class="eyebrow">Programa preventivo · 2026</p>
+        <h1>Cronograma de charlas SSOMA</h1>
+        <p>Planifica cada charla, asigna al responsable y conserva la evidencia fotográfica desde un solo lugar.</p>
+      </div>
+      <div class="hero__badge" aria-label="Periodo noviembre y diciembre de 2026">
+        <span>NOV — DIC</span>
+        <strong>2026</strong>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="toolbar-panel" aria-labelledby="controles-title">
+      <div class="toolbar-panel__top">
+        <div>
+          <p class="section-kicker">Panel de control</p>
+          <h2 id="controles-title">Seguimiento del programa</h2>
+        </div>
+        <div class="month-switch" role="group" aria-label="Seleccionar mes">
+          <button class="month-button is-active" type="button" data-month="2026-11">Noviembre</button>
+          <button class="month-button" type="button" data-month="2026-12">Diciembre</button>
+        </div>
+      </div>
+
+      <div class="stats" aria-live="polite">
+        <article class="stat-card stat-card--blue">
+          <span class="stat-card__icon" aria-hidden="true">▦</span>
+          <div><strong id="stat-sessions">0</strong><span>charlas programadas</span></div>
+        </article>
+        <article class="stat-card stat-card--teal">
+          <span class="stat-card__icon" aria-hidden="true">✓</span>
+          <div><strong id="stat-completed">0</strong><span>charlas cumplidas</span></div>
+        </article>
+        <article class="stat-card stat-card--amber">
+          <span class="stat-card__icon" aria-hidden="true">⌁</span>
+          <div><strong id="stat-evidence">0</strong><span>con evidencia</span></div>
+        </article>
+        <article class="stat-card stat-card--violet">
+          <span class="stat-card__icon" aria-hidden="true">◎</span>
+          <div><strong id="stat-progress">0%</strong><span>avance del mes</span></div>
+        </article>
+      </div>
+
+      <div class="action-row">
+        <button id="create-december" class="button button--primary" type="button">
+          <span aria-hidden="true">＋</span> Crear cronograma de diciembre
+        </button>
+        <button id="export-csv" class="button button--secondary" type="button">Exportar CSV</button>
+        <button id="backup-json" class="button button--secondary" type="button">Descargar respaldo</button>
+        <label class="button button--ghost" for="import-json">Importar respaldo</label>
+        <input id="import-json" class="visually-hidden" type="file" accept="application/json,.json">
+        <button class="button button--ghost" type="button" onclick="window.print()">Imprimir</button>
+      </div>
+
+      <div class="filter-row">
+        <label class="search-box">
+          <span aria-hidden="true">⌕</span>
+          <span class="visually-hidden">Buscar por tema o responsable</span>
+          <input id="search" type="search" placeholder="Buscar tema o responsable…" autocomplete="off">
+        </label>
+        <label class="filter-control">Estado
+          <select id="status-filter">
+            <option value="all">Todos</option>
+            <option value="pending">Pendientes</option>
+            <option value="completed">Cumplidas</option>
+            <option value="evidence">Con evidencia</option>
+            <option value="unassigned">Sin responsable</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <aside id="schedule-note" class="notice" role="note">
+      <span class="notice__icon" aria-hidden="true">i</span>
+      <div>
+        <strong>Programación de noviembre</strong>
+        <p>Del lunes 2 al lunes 30, solo de lunes a sábado. Hay 25 jornadas para 26 temas; por ello, el lunes 30 contiene una sesión doble.</p>
+      </div>
+    </aside>
+
+    <section class="calendar-section" aria-labelledby="calendar-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Vista mensual · lunes a sábado</p>
+          <h2 id="calendar-title">Noviembre de 2026</h2>
+        </div>
+        <p id="calendar-summary" class="section-heading__meta"></p>
+      </div>
+
+      <div id="empty-december" class="empty-state" hidden>
+        <div class="empty-state__icon" aria-hidden="true">▦</div>
+        <h3>Diciembre aún no tiene cronograma</h3>
+        <p>Créalo automáticamente con todos los días de lunes a sábado. Después podrás cambiar temas, responsables y evidencias.</p>
+        <button class="button button--primary" type="button" data-create-december>Crear diciembre</button>
+      </div>
+
+      <div id="calendario" class="calendar" aria-label="Calendario de charlas SSOMA">
+        <div class="weekday">Lunes</div>
+        <div class="weekday">Martes</div>
+        <div class="weekday">Miércoles</div>
+        <div class="weekday">Jueves</div>
+        <div class="weekday">Viernes</div>
+        <div class="weekday">Sábado</div>
+        <div id="calendar-grid" class="calendar-grid"></div>
+      </div>
+      <p id="no-results" class="no-results" hidden>No hay charlas que coincidan con los filtros.</p>
+    </section>
+
+    <section class="topic-library" aria-labelledby="library-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Material visual</p>
+          <h2 id="library-title">Biblioteca de 26 temas</h2>
+        </div>
+        <p class="section-heading__meta">Cada ficha puede descargarse individualmente.</p>
+      </div>
+      <div id="topic-grid" class="topic-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><strong>YUPAY <span>TECH</span></strong><small>Trabajamos seguros, llegamos más lejos</small></div>
+    <p>La información y las fotos se guardan localmente en este navegador. Use “Descargar respaldo” para conservar una copia.</p>
+  </footer>
+
+  <template id="day-template">
+    <article class="day-card">
+      <header class="day-card__header">
+        <div><span class="day-name"></span><strong class="day-number"></strong></div>
+        <span class="session-count"></span>
+      </header>
+      <div class="session-list"></div>
+      <button class="add-session" type="button">＋ Agregar otra charla</button>
+    </article>
+  </template>
+
+  <template id="session-template">
+    <section class="session-card">
+      <div class="session-card__top">
+        <label class="topic-select-label">Tema
+          <select class="topic-select"></select>
+        </label>
+        <button class="icon-button remove-session" type="button" title="Eliminar esta charla" aria-label="Eliminar esta charla">×</button>
+      </div>
+      <div class="topic-preview">
+        <button class="image-button" type="button" title="Ampliar imagen">
+          <img class="topic-image" alt="" loading="lazy">
+        </button>
+        <div class="topic-content">
+          <span class="topic-number"></span>
+          <h3 class="topic-title"></h3>
+          <p class="topic-objective"></p>
+          <a class="download-link" download>↓ Descargar imagen</a>
+        </div>
+      </div>
+      <label class="field">Responsable
+        <input class="responsible-input" type="text" maxlength="80" placeholder="Nombre y apellido" autocomplete="name">
+      </label>
+      <div class="session-actions">
+        <label class="upload-button">
+          <span aria-hidden="true">⌁</span>
+          <span class="upload-label">Agregar evidencia</span>
+          <input class="evidence-input visually-hidden" type="file" accept="image/*" capture="environment">
+        </label>
+        <label class="completed-control"><input class="completed-checkbox" type="checkbox"> Charla cumplida</label>
+      </div>
+      <div class="evidence-panel" hidden>
+        <img class="evidence-image" alt="Evidencia fotográfica de la charla">
+        <div><strong class="evidence-name"></strong><small class="evidence-date"></small></div>
+        <a class="icon-button evidence-download" title="Descargar evidencia" aria-label="Descargar evidencia">↓</a>
+        <button class="icon-button evidence-remove" type="button" title="Eliminar evidencia" aria-label="Eliminar evidencia">×</button>
+      </div>
+    </section>
+  </template>
+
+  <dialog id="image-dialog" class="image-dialog">
+    <button id="dialog-close" class="image-dialog__close" type="button" aria-label="Cerrar">×</button>
+    <img id="dialog-image" alt="">
+    <h2 id="dialog-title"></h2>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
